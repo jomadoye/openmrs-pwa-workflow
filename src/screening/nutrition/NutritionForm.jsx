@@ -103,6 +103,7 @@ class NutritionForm extends React.Component {
           </FormGroup>
         </Col>
         }
+        </Row>
 
         { (( this.props.patient.age >= 18 && this.props.patient.gender === 'M')
           || (this.props.patient.gender === 'F' && this.props.patient.age >= 18 && (this.props.pregnant !== null) && (this.props.pregnant === CONCEPTS.False.uuid))
@@ -147,23 +148,24 @@ class NutritionForm extends React.Component {
           </Col>
           }
           <Row>
-            <FormGroup controlId="formMalnutrition">
-              <ControlLabel sm={2} style={centerElements}>
-                <span style={{visibility: this.props.showMalnutrition}}>Malnutrition</span>
-              </ControlLabel>
-              <br />
-              <Col sm={8}>
-                <Alert
-                  bsStyle={this.props.malnutrition ? this.props.malnutrition.alert : "info"}
-                  style={{visibility: (this.props.malnutrition && this.props.malnutrition.message) ? "visible" : "hidden" }}
-                >
-                  {this.props.malnutrition ? this.props.malnutrition.message : " "}
-                </Alert>
-              </Col>
+            <Col sm={4}>
+              <FormGroup controlId="formMalnutrition">
+                <ControlLabel sm={2} style={centerElements}>
+                  <span style={{visibility: this.props.showMalnutrition}}>Malnutrition</span>
+                </ControlLabel>
+                <br />
+                <Col sm={8} xsOffset={2}>
+                  <Alert
+                    bsStyle={this.props.malnutrition ? this.props.malnutrition.alert : "info"}
+                    style={{visibility: (this.props.malnutrition && this.props.malnutrition.message) ? "visible" : "hidden" }}
+                  >
+                    {this.props.malnutrition ? this.props.malnutrition.message : " "}
+                  </Alert>
+                </Col>
 
-            </FormGroup>
+              </FormGroup>
+            </Col>
           </Row>
-        </Row>
       </Grid>
     );
 
